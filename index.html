@@ -56,9 +56,9 @@ if( window.location.search.match( /print-pdf/gi ) ) {
       <ul>
         <li class="fragment">the 'V' in MVC</li>
         <li class="fragment">stateful</li>
-        <li class="fragment">fast</li>
         <li class="fragment">simple</li>
         <li class="fragment">fast</li>
+        <li class="fragment">used in production on Facebook and Instagram</li>
       </ul>
     </section>
 
@@ -107,8 +107,8 @@ if( window.location.search.match( /print-pdf/gi ) ) {
         <h3>Index</h3>
 
         <p><small>we can reference the collection as <code>@props.posts</code> within the 'index' component</small></p>
-        <p><small>we bind our <code>@handleUpdate()</code> callback to the collection's add / remove / reset events, then call <code>@props.posts.fetch()</code></small></p>
-        <p><small>when the collection changes, <code>@handleUpdate()</code> changes our component's state to trigger a render</small></p>
+        <p><small>we bind our custom <code>@handleUpdate</code> callback to the collection's add / remove / reset events, then call <code>@props.posts.fetch()</code></small></p>
+        <p><small>when the collection changes, <code>@handleUpdate</code> changes our component's state to trigger render</small></p>
 
         <pre><code contenteditable style="font-size: 18px; margin-top: 10px;" class="coffee">
   define ['react', 'ui/posts/show', 'ui/common/loading'],
