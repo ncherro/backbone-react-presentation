@@ -81,7 +81,8 @@ if( window.location.search.match( /print-pdf/gi ) ) {
 
     <section>
       <section>
-        <h3>Nope - it's easy!</h3>
+        <h2>Nope - it's easy!</h2>
+        <h3>Render a component into the DOM</h3>
 
         <p><small>this renders a list of posts into #content, passing in a
           backbone collection as 'posts'.</small></p>
@@ -189,6 +190,19 @@ if( window.location.search.match( /print-pdf/gi ) ) {
         component is destroyed. this is a good place to unbind event listeners.</small></li>
       </ul>
     </section>
+
+    <section>
+      <h2>In summary</h2>
+      <p>React gives us an efficient way to build and render stateful UI components</p>
+      <p>Using React + Backbone, we can:</p>
+      <ol>
+        <li>set up a React component with a callback that triggers a simple <a href="http://facebook.github.io/react/docs/component-api.html#setstate" target="_blank">state change</a>, which triggers a re-render</li>
+        <li>instantiate the component, passing in a Backbone model / collection</li>
+        <li>use <a href="http://backbonejs.org/#Events-on" target="_blank"><code>on()</code></a> bind our component's callback to certain model / collection events</li>
+        <li>use <a href="http://backbonejs.org/#Events-off" target="_blank"><code>off()</code></a> unbind events when the component unmounts</li>
+      </ol>
+    </section>
+
 
     <section>
       <h2>Resources</h2>
