@@ -66,9 +66,7 @@ if( window.location.search.match( /print-pdf/gi ) ) {
       <h2>What makes React so fast?</h2>
       <blockquote cite="http://facebook.github.io/react/docs/displaying-data.html">&ldquo;It uses a fast, internal mock DOM to perform diffs and computes the most efficient DOM mutation for you.&rdquo;</blockquote>
       <ul>
-        <li class="fragment">when the state of a react component changes, react runs the change
-        on it's "internal mock DOM" to determine what needs to change, limiting 
-        expensive updates to the DOM</li>
+        <li class="fragment">when the state of a react component changes, react makes the change in it's "internal mock DOM" to determine what needs to change before it actually updates the DOM</li>
         <li class="fragment">DOM updates are batched, so they happen simultaneously</li>
         <li class="fragment"><a href="http://calendar.perfplanet.com/2013/diff/" target="_blank">@vjeux's explanation of the diff algorithm</a></li>
       </ul>
@@ -82,10 +80,11 @@ if( window.location.search.match( /print-pdf/gi ) ) {
     <section>
       <section>
         <h2>Nope - it's easy!</h2>
-        <h3>Render a component into the DOM</h3>
+        <h3>Let's render a list of posts</h3>
 
-        <p><small>this renders a list of posts into #content, passing in a
-          backbone collection as 'posts'.</small></p>
+        <p><small>render the Posts component into <code>#content</code></small></p>
+        <p><small>pass in a backbone collection we'll be able to refrence with
+        <code>@props.posts</code></small></p>
 
         <pre><code contenteditable style="font-size: 18px; margin-top: 10px;" class="coffee">
   define ['react', 'ui/posts/index', 'collections/posts],
@@ -99,15 +98,14 @@ if( window.location.search.match( /print-pdf/gi ) ) {
     )
         </code></pre>
 
-        <p style="margin-top: 40px; font-size: 16px;">* calls to <code>React.renderComponent()</code> will probably be made in a backbone router action</p>
+        <p style="margin-top: 40px; font-size: 16px;"><code>React.renderComponent()</code> will probably be called in a backbone router action</p>
 
       </section>
 
       <section>
         <h3>Index</h3>
 
-        <p><small>we can reference the collection as <code>@props.posts</code> within the 'index' component</small></p>
-        <p><small>we bind our custom <code>@handleUpdate</code> callback to the collection's add / remove / reset events, then call <code>@props.posts.fetch()</code></small></p>
+        <p><small>bind our custom <code>@handleUpdate</code> callback to the collection's add / remove / reset events, then call <code>@props.posts.fetch()</code></small></p>
         <p><small>when the collection changes, <code>@handleUpdate</code> changes our component's state to trigger render</small></p>
 
         <pre><code contenteditable style="font-size: 18px; margin-top: 10px;" class="coffee">
@@ -196,10 +194,10 @@ if( window.location.search.match( /print-pdf/gi ) ) {
       <p>React gives us an efficient way to build and render stateful UI components</p>
       <p>Using React + Backbone, we can:</p>
       <ol>
-        <li>set up a React component with a callback that triggers a simple <a href="http://facebook.github.io/react/docs/component-api.html#setstate" target="_blank">state change</a>, which triggers a re-render</li>
-        <li>instantiate the component, passing in a Backbone model / collection</li>
-        <li>use <a href="http://backbonejs.org/#Events-on" target="_blank"><code>on()</code></a> bind our component's callback to certain model / collection events</li>
-        <li>use <a href="http://backbonejs.org/#Events-off" target="_blank"><code>off()</code></a> unbind events when the component unmounts</li>
+        <li class="fragment">set up a React component with a callback that triggers a simple <a href="http://facebook.github.io/react/docs/component-api.html#setstate" target="_blank">state change</a>, which triggers a re-render</li>
+        <li class="fragment">instantiate the component, passing in a Backbone model / collection</li>
+        <li class="fragment">use <a href="http://backbonejs.org/#Events-on" target="_blank"><code>on()</code></a> bind our component's callback to certain model / collection events</li>
+        <li class="fragment">use <a href="http://backbonejs.org/#Events-off" target="_blank"><code>off()</code></a> unbind events when the component unmounts</li>
       </ol>
     </section>
 
